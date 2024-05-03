@@ -16,7 +16,7 @@ color_list = ['g', 'b']
 fbscale = functools.partial(
         utility_funcs.delayed_pulse, 
         t_start=200.0, 
-        period=100.0, 
+        period=50.0, 
         duty=0.1, 
         )
 
@@ -28,7 +28,7 @@ param = {
         'fbscale'  : fbscale, 
         }
 
-eq_bais = 20.0
+eq_bais = 30.0
 param['bias']  = eq_bais*param['dcoef']
 
 
@@ -95,4 +95,6 @@ for igain, data in sim_data.items():
 ax.grid(True)
 ax.set_xlabel('x (m)')
 ax.set_ylabel('y (m)')
+ax.set_title(f'Flight Trajectories, speed={speed:1.2f}(m/s)')
+ax.axis('equal')
 plt.show()
